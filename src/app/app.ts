@@ -1,12 +1,10 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RegistrationComponent } from './registration/registration';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [RegistrationComponent],
+  template: `<app-registration></app-registration>`
 })
-export class App {
-  protected readonly title = signal('frontend-assignment');
-}
+export class AppComponent {}

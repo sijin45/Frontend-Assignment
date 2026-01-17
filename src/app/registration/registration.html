@@ -1,0 +1,156 @@
+<div class="page">
+  <div class="card">
+    <h2>REGISTRATION FORM</h2>
+
+    <div class="avatar">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" />
+    </div>
+
+    
+    <form #f="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        
+        <div class="input-box">
+          
+          <input
+            placeholder="First Name"
+            name="firstName"
+            [(ngModel)]="model.firstName"
+            pattern="^[A-Za-z ]+$"
+            required
+            #firstName="ngModel"
+          />
+        </div>
+      </div>
+      <p class="error" *ngIf="firstName.invalid && firstName.touched">
+        Only letters and spaces allowed
+      </p>
+
+      <div class="row">
+        
+        <div class="input-box">
+          
+          <input
+            placeholder="Last Name"
+            name="lastName"
+            [(ngModel)]="model.lastName"
+            pattern="^[A-Za-z ]+$"
+            required
+            #lastName="ngModel"
+          />
+        </div>
+      </div>
+      <p class="error" *ngIf="lastName.invalid && lastName.touched">
+        Only letters and spaces allowed
+      </p>
+
+     
+      <div class="input-box">
+        <i class="fa fa-user"></i>
+        <input
+          placeholder="Username"
+          name="username"
+          [(ngModel)]="model.username"
+          pattern="^[A-Za-z ]+$"
+          required
+          #username="ngModel"
+        />
+      </div>
+      <p class="error" *ngIf="username.invalid && username.touched">
+        Only letters and spaces allowed
+      </p>
+
+   <div class="input-box">
+  <i class="fa fa-envelope"></i>
+  <input
+    placeholder="Email"
+    type="email"
+    name="email"
+    [(ngModel)]="model.email"
+    required
+    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+    #email="ngModel"
+  />
+</div>
+
+      <p class="error" *ngIf="email.invalid && email.touched">
+        Enter a valid email address
+      </p>
+
+     
+      <div class="input-box">
+        <i class="fa fa-phone"></i>
+        <input
+          placeholder="Tel. Number"
+          name="phone"
+          [(ngModel)]="model.phone"
+          pattern="^[0-9]{10}$"
+          maxlength="10"
+          required
+          #phone="ngModel"
+        />
+      </div>
+      <p class="error" *ngIf="phone.invalid && phone.touched">
+        Enter a valid 10-digit phone number
+      </p>
+
+      <div class="input-box">
+        <i class="fa fa-lock"></i>
+        <input
+          placeholder="Password"
+          type="password"
+          name="password"
+          [(ngModel)]="model.password"
+        />
+      </div>
+
+      <div class="input-box">
+        <i class="fa fa-lock"></i>
+        <input
+          placeholder="Confirm Password"
+          type="password"
+          name="confirm"
+          [(ngModel)]="confirmPassword"
+        />
+      </div>
+      <p class="error"
+         *ngIf="model.password !== confirmPassword && confirmPassword">
+        Passwords do not match
+      </p>
+
+      <button type="submit" [disabled]="f.invalid">
+        OK
+      </button>
+    </form>
+
+   
+    <div class="table-box" *ngIf="users.length">
+      <h3>Registered Users</h3>
+
+      <table>
+        <tr>
+          <th>First</th>
+          <th>Last</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+
+        <tr *ngFor="let u of users; let i = index">
+          <td>{{ u.firstName }}</td>
+          <td>{{ u.lastName }}</td>
+          <td>{{ u.username }}</td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.phone }}</td>
+          <td>
+            <button (click)="editUser(i)">Update</button>
+            <button (click)="deleteUser(i)">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
