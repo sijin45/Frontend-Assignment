@@ -1,28 +1,41 @@
+/* --- Page layout --- */
 .page {
-  height: 100vh;
-  background: #dfe8d3;
+  min-height: 100vh;
+  background-color: #dfe8d3;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: Arial, sans-serif;
+  padding: 20px;
 }
 
+/* --- Card --- */
 .card {
-  width: 420px;
+  width: 520px;
+ 
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   text-align: center;
 }
 
+/* --- Heading --- */
 h2 {
-  color: white;
-  letter-spacing: 2px;
+  color: #333333;
   margin-bottom: 20px;
+  letter-spacing: 1.5px;
 }
 
+/* --- Avatar --- */
 .avatar img {
   width: 90px;
+  height: 90px;
+  border-radius: 50%;
   margin-bottom: 20px;
 }
 
+/* --- Form Rows --- */
 .row {
   display: flex;
   gap: 10px;
@@ -36,7 +49,7 @@ h2 {
 
 .input-box i {
   position: absolute;
-  left: 12px;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
   color: #666;
@@ -44,44 +57,115 @@ h2 {
 
 .input-box input {
   width: 100%;
-  padding: 12px 12px 12px 40px;
+  padding: 12px 12px 12px 35px;
   border-radius: 6px;
-  border: none;
+  border: 1px solid #ccc;
   outline: none;
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.15);
+  box-sizing: border-box;
+  font-size: 14px;
 }
 
-button {
+.input-box input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* --- Error messages --- */
+.error {
+  color: red;
+  font-size: 12px;
+  text-align: left;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+/* --- Submit button --- */
+button[type="submit"] {
   margin-top: 10px;
   padding: 10px 30px;
   border: none;
   border-radius: 6px;
-  background: white;
+  background-color: #4CAF50;
+  color: white;
   font-size: 16px;
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
   cursor: pointer;
+  transition: 0.2s;
 }
 
-.error {
-  color: red;
-  font-size: 13px;
+button[type="submit"]:hover {
+  background-color: #45a049;
 }
+
+/* --- Table --- */
 .table-box {
-  margin-top: 25px;
+  margin-top: 20px;
+  width: 100%;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
+  background: #fff;
 }
 
 th, td {
   border: 1px solid #ccc;
   padding: 8px;
   font-size: 14px;
+  text-align: center;
 }
 
 th {
-  background: #f2f2f2;
+  background-color: #f2f2f2;
+}
+
+/* --- Action buttons --- */
+.action-cell {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  
+}
+
+.update-btn, .delete-btn {
+  border: none;
+  border-radius: 4px;
+  padding: 5px 12px;
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.update-btn {
+  background-color: #4CAF50; /* Green */
+}
+
+.update-btn:hover {
+  background-color: #45a049;
+}
+
+.delete-btn {
+  background-color: #f44336; /* Red */
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* --- Responsive for smaller screens --- */
+@media screen and (max-width: 480px) {
+  .card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .action-cell {
+    flex-direction: column;
+    gap: 5px;
+  }
 }

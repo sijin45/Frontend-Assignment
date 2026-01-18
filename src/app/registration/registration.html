@@ -123,7 +123,6 @@
         OK
       </button>
     </form>
-
    
     <div class="table-box" *ngIf="users.length">
       <h3>Registered Users</h3>
@@ -145,9 +144,10 @@
           <td>{{ u.email }}</td>
           <td>{{ u.phone }}</td>
           <td>
-            <button (click)="editUser(i)">Update</button>
-            <button (click)="deleteUser(i)">Delete</button>
-          </td>
+         <button class="update-btn" (click)="editUser(i)">Update</button>
+         <button class="delete-btn" (click)="deleteUser(i)">Delete</button>
+         </td>
+
         </tr>
       </table>
     </div>
